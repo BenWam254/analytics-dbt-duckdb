@@ -1,0 +1,22 @@
+name: 'analytics_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'duckdb_profile'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  analytics_dbt:
+    staging:
+      +meta:
+        materializes: view
+    marts:
+      +materialized: table
+flags:
+  require_generic_test_arguments_property: true

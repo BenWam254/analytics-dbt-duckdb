@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: warehouse
+    schema: main
+    tables:
+      - name: inventory_snapshot
+      - name: hourly_weather
+
+models:
+  - name: stg_inventory
+    description: "Cleaned staging view of raw inventory snapshot records"
+    columns:
+      - name: product_id
+        description: "Primary key for products"
+        tests:
+          - unique
+          - not_null

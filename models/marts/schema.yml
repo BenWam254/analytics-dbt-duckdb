@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimension table containing formatted product state and inventory tiering"
+    columns:
+      - name: product_id
+        description: "Primary key for products"
+        tests:
+          - unique
+          - not_null
+      - name: inventory_status
+        description: "Stock tiering status"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Out of Stock', 'Low Stock', 'In Stock']
